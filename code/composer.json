@@ -1,0 +1,12 @@
+{
+    "name": "vsl/vsl",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "vsl\\": "src"
+        }
+    },
+    "require": {
+        "phpunit/phpunit": "^11.1"
+    }
+}
