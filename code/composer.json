@@ -1,14 +1,14 @@
 {
-    "name": "vsl/vsl",
-    "type": "library",
-    "version": "0.0.1",
-    "autoload": {
-        "psr-4": {
-            "Vsl\\": "src",
-            "Vsl\\Core\\": "src/core"
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/sajonaro/vsl"
         }
-    },
+    ],
     "require": {
-        "phpunit/phpunit": "^11.1"
+        "phpunit/phpunit": "^11.1",
+        "slim/slim": "^4.13",
+        "guzzlehttp/psr7": "^2",
+        "vsl": "dev-master"
     }
 }

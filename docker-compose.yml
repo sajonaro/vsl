@@ -8,11 +8,3 @@ services:
       - ./code:/app
     working_dir: /app 
 
-  artisan:
-    build:
-      context: dockerfiles
-      dockerfile: php.Dockerfile
-    volumes:
-      - ./code:/app
-    #specify the working directory of artisan command  
-    entrypoint: ["php", "/app/artisan"]
