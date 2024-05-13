@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "53b0266f517f9c7cf51ca876ad097fa4",
+    "content-hash": "db1e4d1682ec81390adc3c24d593dab8",
     "packages": [
         {
             "name": "guzzlehttp/psr7",
@@ -2285,12 +2285,45 @@
                 }
             ],
             "time": "2024-03-03T12:36:25+00:00"
+        },
+        {
+            "name": "vsl/vsl",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sajonaro/vsl.git",
+                "reference": "8acc0bc3a7d52e51b334d934be4333671af0efc9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sajonaro/vsl/zipball/8acc0bc3a7d52e51b334d934be4333671af0efc9",
+                "reference": "8acc0bc3a7d52e51b334d934be4333671af0efc9",
+                "shasum": ""
+            },
+            "require": {
+                "phpunit/phpunit": "^11.1"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Vsl\\": "src",
+                    "Vsl\\Core\\": "src/core"
+                }
+            },
+            "support": {
+                "source": "https://github.com/sajonaro/vsl/tree/master",
+                "issues": "https://github.com/sajonaro/vsl/issues"
+            },
+            "time": "2024-05-13T11:31:01+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "vsl/vsl": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

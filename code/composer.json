@@ -9,6 +9,6 @@
         "phpunit/phpunit": "^11.1",
         "slim/slim": "^4.13",
         "guzzlehttp/psr7": "^2",
-        "vsl": "dev-master"
+        "vsl/vsl": "dev-master"
     }
 }
