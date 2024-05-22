@@ -12,9 +12,13 @@ docker compose up -d
 ```
 then open it in browser via localhost:8099
 
-- alternatively ( install httpie cli for that one)
+- alternatively ( install httpie cli tool for that one)
+
 ```
+http get http://localhost:8099
 http get http://localhost:8099/api/products
+http get http://localhost:8099/api/products/1
+
 ```
 
 - to restore packages (dependencies)
