@@ -9,6 +9,14 @@
         "phpunit/phpunit": "^11.1",
         "slim/slim": "^4.13",
         "guzzlehttp/psr7": "^2",
-        "vsl/vsl": "dev-master"
+        "vsl/vsl": "dev-master",
+        "php-di/php-di": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
     }
+
+
 }

@@ -12,9 +12,18 @@ docker compose up -d
 ```
 then open it in browser via localhost:8099
 
-
+- alternatively ( install httpie cli for that one)
+```
+http get http://localhost:8099/api/products
+```
 
 - to restore packages (dependencies)
 ```
  docker compose run --rm composer update
+```
+
+- to run without docker 
+
+```
+php -S localhost:8099 -t code/public
 ```
