@@ -33,36 +33,12 @@ $app->get('/', function (Request $request,Response $response, $args) {
 });
 
 
-$app->get('/api/products', function (Request $request,Response $response, $args) {
- 
-    $db = $this->get(App\Database::class); 
-    $repository = new App\Features\Products\Repository($db);
-    $products = $repository->getAll();
-    $data = json_encode($products);
-    $response->getBody()->write($data);
-    
-    return $response;
-})->add(AddJsonREsponseHeader::class);
+$app->get('/api/products', App\Features\Products\Controller::class . ':getAll')
+    ->add(AddJsonREsponseHeader::class);
 
 
-$app->get('/api/products/{id:[0-9]+}', function (Request $request,Response $response, $args) {
- 
-    $id = $args['id']; 
-
-    $db = $this->get(App\Database::class); 
-    $repository = new App\Features\Products\Repository($db);
-    $result = $repository->getById((int) $id);
-    if($result === false){
-        throw new \Slim\Exception\HttpNotFoundException ($request, message:'product not found');
-    }
-    $body = json_encode($result);
-    $response->getBody()->write($body);
-    
-    return $response;
-})->add(AddJsonREsponseHeader::class);
-
-
-
+$app->get('/api/products/{id:[0-9]+}', App\Features\Products\Controller::class . ':getById')
+    ->add(AddJsonREsponseHeader::class);
 
 
 $app->run();
