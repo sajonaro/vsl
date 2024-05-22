@@ -1,18 +1,28 @@
 <?php
 
 declare(strict_types=1);
+
 namespace Common;
+
 use PDO;
 
 class ConnectionProvider
 {
-
-    public static function getConnection($dbHost, $dbUser, $dbPassword, $dbName)
+    public function __construct(private string $host,
+                                private string $dbname,
+                                private string $user,
+                                private string $password)
     {
-        return new PDO('mysql:host=' . $dbHost . ';dbname=' . $dbName . '', '' . $dbUser . '', null, [
+    }
+
+    public function getConnection(): PDO
+    {
+        $dsn = "mysql:host=$this->host;dbname=$this->dbname;charset=utf8";
+
+        $pdo = new PDO($dsn, $this->user, $this->password, [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         ]);
+
+        return $pdo;
     }
-    
-    
 }

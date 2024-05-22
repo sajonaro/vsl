@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Features\Products;
 
-use App\Database;
+use Common\ConnectionProvider as Database;
 use PDO;
 
 class Repository {
