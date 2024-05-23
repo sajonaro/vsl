@@ -6,10 +6,17 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Features\Products\Repository;
 use \Slim\Exception\HttpNotFoundException;
+use Valitron\Validator;
 
 class Controller{
 
-    public function __construct(private Repository $repository){
+    public function __construct(private Repository $repository, 
+                                private Validator $validator){
+
+        $this->validator->mapFieldsRules([
+            "name" => ['required'],
+            "price"=> ['required', 'numeric', ['min' , 0]]
+        ]);                                
 
     }
 
@@ -34,6 +41,29 @@ class Controller{
         $response->getBody()->write($body);
     
         return $response;
+    }
+
+    public function create(Request $request, Response $response, $args): Response{
+
+        $data = $request->getParsedBody();
+
+        $this->validator = $this->validator->withData($data);
+        
+        if( ! $this->validator->validate()){
+            $errors = json_encode($this->validator->errors());
+            $response->getBody()
+                     ->write($errors);
+            return $response->withStatus(422);
+        }
+        $id = $this->repository->create($data);
+        $body = json_encode([
+            'message' => 'product created',
+            'id' => $id
+        ]);
+
+        return $response->withStatus(201);
+        
+
     }
 }
 

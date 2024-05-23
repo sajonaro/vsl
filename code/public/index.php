@@ -21,6 +21,8 @@ AppFactory::setContainer($container);
 
 $app = AppFactory::create();
 
+$app->addBodyParsingMiddleware();
+
 $error_middleware = $app->addErrorMiddleware(true, true, true);
 $error_handler = $error_middleware->getDefaultErrorHandler();
 $error_handler->forceContentType('application/json');
@@ -40,5 +42,7 @@ $app->get('/api/products', App\Features\Products\Controller::class . ':getAll')
 $app->get('/api/products/{id:[0-9]+}', App\Features\Products\Controller::class . ':getById')
     ->add(AddJsonREsponseHeader::class);
 
+$app->post('/api/products', App\Features\Products\Controller::class . ':create')
+    ->add(AddJsonREsponseHeader::class);    
 
 $app->run();

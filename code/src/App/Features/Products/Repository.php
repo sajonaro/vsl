@@ -29,4 +29,15 @@ class Repository {
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function create(array $data):string
+    {
+        $pdo = $this->db->getConnection();
+        $stmt = $pdo->prepare('INSERT INTO products (name, description, price) VALUES (:name, :description, :price)');
+        $stmt->bindParam(':name', $data['name'], PDO::PARAM_STR);
+        $stmt->bindParam(':description', $data['description'], PDO::PARAM_STR);
+        $stmt->bindParam(':price', $data['price'], PDO::PARAM_INT);
+        $stmt->execute();
+        return $pdo->lastInsertId();
+    }
 }
