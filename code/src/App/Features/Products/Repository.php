@@ -40,4 +40,16 @@ class Repository {
         $stmt->execute();
         return $pdo->lastInsertId();
     }
+
+    public function update(array $data):bool
+    {
+        $pdo = $this->db->getConnection();
+        $stmt = $pdo->prepare('UPDATE products SET name = :name, description = :description, price = :price  WHERE id = :id ');
+        $stmt->bindParam(':name', $data['name'], PDO::PARAM_STR);
+        $stmt->bindParam(':description', $data['description'], PDO::PARAM_STR);
+        $stmt->bindParam(':price', $data['price'], PDO::PARAM_INT);
+        $stmt->bindParam(':id', $data['id'], PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->rowCount() > 0;
+    }
 }

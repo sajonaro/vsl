@@ -65,5 +65,26 @@ class Controller{
         
 
     }
+
+    public function update(Request $request, Response $response, $args) : Response{
+
+        $data = $request->getParsedBody();
+
+        $this->validator = $this->validator->withData($data);
+        
+        if( ! $this->validator->validate()){
+            $errors = json_encode($this->validator->errors());
+            $response->getBody()
+                     ->write($errors);
+            return $response->withStatus(422);
+        }
+
+        $result = $this->repository->update($data);
+        if($result === false){
+            throw new HttpNotFoundException($request, message:'product not found');
+        }
+        return $response;
+    }        
+    
 }
 

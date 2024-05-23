@@ -45,4 +45,7 @@ $app->get('/api/products/{id:[0-9]+}', App\Features\Products\Controller::class .
 $app->post('/api/products', App\Features\Products\Controller::class . ':create')
     ->add(AddJsonREsponseHeader::class);    
 
+$app->patch('/api/products', App\Features\Products\Controller::class . ':update')
+    ->add(AddJsonREsponseHeader::class);       
+
 $app->run();
