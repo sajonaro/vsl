@@ -60,7 +60,7 @@ class Controller{
             'message' => 'product created',
             'id' => $id
         ]);
-
+        $response->getBody()->write($body);
         return $response->withStatus(201);
         
 
@@ -80,10 +80,13 @@ class Controller{
         }
 
         $result = $this->repository->update($data);
-        if($result === false){
-            throw new HttpNotFoundException($request, message:'product not found');
-        }
-        return $response;
+     
+        $body = json_encode([
+            'message' => 'product updated',
+            'rows affected' => $result ? 1 : 0
+        ]);
+        $response->getBody()->write($body);
+        return $response->withStatus(200);
     }        
     
 }
