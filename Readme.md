@@ -18,6 +18,7 @@ then open it in browser via localhost:8099
 http get http://localhost:8099
 http get http://localhost:8099/api/products
 http get http://localhost:8099/api/products/1
+http post http://localhost:8099/api/products name="abc" price="10" description="stuff"
 
 ```
 
