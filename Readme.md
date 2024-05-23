@@ -19,6 +19,7 @@ http get http://localhost:8099
 http get http://localhost:8099/api/products
 http get http://localhost:8099/api/products/1
 http post http://localhost:8099/api/products name="abc" price="10" description="stuff"
+http patch http://localhost:8099/api/products id=1 name="new name" price=200
 
 ```
 
