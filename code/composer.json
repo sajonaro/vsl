@@ -11,7 +11,8 @@
         "guzzlehttp/psr7": "^2",
         "vsl/vsl": "dev-master",
         "php-di/php-di": "^7.0",
-        "vlucas/valitron": "^1.4"
+        "vlucas/valitron": "^1.4",
+        "aws/aws-sdk-php": "^3.308"
     },
     "autoload": {
         "psr-4": {

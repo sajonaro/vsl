@@ -7,6 +7,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\RequestInterface as Request;
 use DI\ContainerBuilder;
 use App\Middleware\AddJsonREsponseHeader;
+use Common\SessionsHelper;
 
 define ('APP_ROOT', dirname(__DIR__));
 
@@ -31,6 +32,11 @@ $error_handler->forceContentType('application/json');
 $app->get('/', function (Request $request,Response $response, $args) {
     $response->getBody()->write("welcome to products app!");
     $response->getBody()->write("<br> this app is a client of VSA library.<br> please check https://github.com/sajonaro/vsl");
+    
+    //function from SessionsHelper';
+    $sh = $this->get(SessionsHelper::class);
+    $sh->startSession();
+    $response->getBody()->write("<br> session counter: " . $sh->countSession());
     return $response;
 });
 
