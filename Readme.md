@@ -8,7 +8,7 @@ this is a HELLO-WORLD application based on SLIM ( https://www.slimframework.com/
 - to run application 
 
 ```
-docker compose up -d
+./create-sessions-table-and-run.sh
 ```
 then open it in browser via localhost:8099
 
@@ -28,7 +28,7 @@ http patch http://localhost:8099/api/products id=1 name="new name" price=200
  docker compose run --rm composer update
 ```
 
-- to run without docker 
+- to run without docker (prerequisite: php version installed on the host)
 
 ```
 php -S localhost:8099 -t code/public
