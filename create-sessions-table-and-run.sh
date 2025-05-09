@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-sudo docker compose up -d                
+sudo docker compose up -d --build               
 
 aws dynamodb create-table --table-name sessions \
                           --attribute-definitions AttributeName=id,AttributeType=S  \

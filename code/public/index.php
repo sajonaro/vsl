@@ -30,13 +30,18 @@ $error_handler->forceContentType('application/json');
 
 
 $app->get('/', function (Request $request,Response $response, $args) {
-    $response->getBody()->write("welcome to products app!");
-    $response->getBody()->write("<br> this app is a client of VSA library.<br> please check https://github.com/sajonaro/vsl");
-    
+   
     //function from SessionsHelper';
     $sh = $this->get(SessionsHelper::class);
     $sh->startSession();
-    $response->getBody()->write("<br> session counter: " . $sh->countSession());
+    $response->getBody()->write("<br> session counter: " . $sh->countSession() . "<br>");
+
+    
+    $response->getBody()->write("welcome to products app!");
+    $response->getBody()->write("<br> this app is a client of VSA library.<br> please check https://github.com/sajonaro/vsl");
+    
+
+    echo xdebug_info();
     return $response;
 });
 

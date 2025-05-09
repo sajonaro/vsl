@@ -1,10 +1,13 @@
 FROM php:8.3-fpm-alpine
 
+RUN apk add --update linux-headers
+RUN apk --no-cache add pcre-dev ${PHPIZE_DEPS} \ 
+  && pecl install xdebug \
+  && docker-php-ext-enable xdebug \
+  && apk del pcre-dev ${PHPIZE_DEPS}
 
-# install redis based  session handler
-RUN apk add --no-cache $PHPIZE_DEPS
-RUN pecl install redis 
-RUN docker-php-ext-enable redis
+COPY ./php.ini /usr/local/etc/php/php.ini
+
 
 
 #install pdo_mysql
